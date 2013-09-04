@@ -25,7 +25,7 @@ namespace HelloASP
 
         protected void PrintFromCode(object sender, EventArgs e)
         {
-
+            printFromCode.InnerText = "Printed from code!";
         }        
     }
 }

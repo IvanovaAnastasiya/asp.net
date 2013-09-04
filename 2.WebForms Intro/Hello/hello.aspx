@@ -33,8 +33,11 @@
                         <h2 class="text-center">Secont task </h2>
                         <h4 class="text-center ">Print from code and from aspx</h4>
                         <div class="span4">
-                            <asp:Button ID="PrintFromCodeButton" OnClick="PrintFromCode" />
+                            <asp:Button ID="PrintFromCodeButton" OnClick="PrintFromCode" runat="server"/>
                             From Code:<span runat="server" id="printFromCode"></span>
+                        </div>
+                        <div class="span4">                            
+                            From Aspx:<span >Printed from aspx</span>
                         </div>
                     </div>                
             </form>
