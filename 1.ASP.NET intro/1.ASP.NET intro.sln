@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.20623.1 VSUPREVIEW
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intro", "Intro\Intro.csproj", "{ADE02346-F543-4F3A-ABED-A6AA7D74132A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imagehanlder", "Imagehanlder\Imagehanlder.csproj", "{87C64D12-658B-466B-BAC2-6C642F6D1055}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADE02346-F543-4F3A-ABED-A6AA7D74132A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE02346-F543-4F3A-ABED-A6AA7D74132A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE02346-F543-4F3A-ABED-A6AA7D74132A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE02346-F543-4F3A-ABED-A6AA7D74132A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87C64D12-658B-466B-BAC2-6C642F6D1055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87C64D12-658B-466B-BAC2-6C642F6D1055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87C64D12-658B-466B-BAC2-6C642F6D1055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87C64D12-658B-466B-BAC2-6C642F6D1055}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
