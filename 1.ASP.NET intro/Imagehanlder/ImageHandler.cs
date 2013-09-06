@@ -35,7 +35,7 @@ public class ImageHandler : IHttpHandler
             new SolidBrush(Color.BlanchedAlmond),
             new PointF(25, 40));
         context.Response.ContentType = "image/jpeg";
-        bitmap.Save(context.Response.OutputStream, ImageFormat.Jpeg);
+        bitmap.Save(context.Response.OutputStream, ImageFormat.Png);
         graphics.Dispose();
         bitmap.Dispose();
     }
