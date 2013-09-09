@@ -11,5 +11,7 @@ namespace _4.DataBinding
         public int Year { get; set; }
 
         public List<Extra> Extras { get; set; }
+
+        public Manufacturer Manufacturer { get; set; }
     }
 }
