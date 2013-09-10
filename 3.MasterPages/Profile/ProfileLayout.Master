@@ -1,0 +1,39 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ProfileLayout.master.cs" Inherits="Profile.ProfileLayout" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Profile</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <header>
+        <img src="#" width="50" height="50" alt="Logo" title="Logo of site"/>
+        <h1>This is the page header with logo</h1>
+    </header>
+
+    <form id="form1" runat="server" aria-atomic="true">
+        <aside>
+            <asp:Menu runat="server">
+                <Items>
+                    <asp:MenuItem Text="Home" NavigateUrl="~/Home.aspx"/>
+                    <asp:MenuItem Text="Friends" NavigateUrl="~/Pages/Friends.aspx"/>
+                    <asp:MenuItem Text="Personal" NavigateUrl="~/Pages/PersonalInfo.aspx"/>
+                    <asp:MenuItem Text="Contact" NavigateUrl="~/Pages/Contact.aspx"/>
+                </Items>
+            </asp:Menu>
+        </aside>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolderProfile" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </form>
+
+    <footer>
+        <p>Telerik Academy 2013</p>
+    </footer>
+
+</body>
+</html>
