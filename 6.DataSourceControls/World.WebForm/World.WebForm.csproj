@@ -79,7 +79,7 @@
     <Content Include="scripts\js\bootstrap.js" />
     <Content Include="scripts\js\bootstrap.min.js" />
     <Content Include="styles\editContinents.css" />
-    <Content Include="styles\main.css" />
+    <Content Include="styles\world.css" />
     <Content Include="Web.config" />
     <Content Include="World.aspx" />
   </ItemGroup>

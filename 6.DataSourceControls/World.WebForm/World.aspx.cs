@@ -70,6 +70,11 @@ namespace World.WebForm
                     ClientScript.GetPostBackClientHyperlink(this.CountriesGrid, "Select$" + e.Row.RowIndex);
             }
         }
+
+        public void TownsListView_InsertItem()
+        {
+            
+        }
         
     }
 }

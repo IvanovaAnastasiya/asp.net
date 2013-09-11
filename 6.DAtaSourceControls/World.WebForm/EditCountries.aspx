@@ -14,6 +14,13 @@
     <form id="editCountriesForm" runat="server" class="container-fluid">
         <div class="hero-unit">
             <h1>Countries/Towns Edit</h1>
+            <asp:EntityDataSource runat="server"
+                ConnectionString="name=WorldEntities"
+                DefaultContainerName="WorldEntities"
+                EntitySetName="Countries"
+                Include="Towns"
+                EnableFlattening="false">
+
         </div>
         <a href="World.aspx" class="btn btn-info">Back to main</a>
     </form>

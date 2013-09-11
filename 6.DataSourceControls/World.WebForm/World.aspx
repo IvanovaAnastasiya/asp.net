@@ -15,7 +15,7 @@
 <body class="container-fluid">
     <form id="worldForm" runat="server" class="container-fluid active text-center">
         <div class="row-fluid text-center" >
-            <div class="page-header hero-unit">
+            <div class="page-header">
                 <h1>Main Page</h1>
             </div>
         </div>        
@@ -42,11 +42,10 @@
         <div class="row-fluid clear-fix">
             <div class="span5">                
                 <h3>Countries</h3>
-                <asp:EntityDataSource runat="server"
-                    ConnectionString="name=WorldEntities"
-                    DefaultContainerName="WorldEntities"
+                <asp:EntityDataSource ID="CountriesDataSource"                    
+                    runat="server" ConnectionString="name=WorldEntities" DefaultContainerName="WorldEntities"
                     EntitySetName="Countries" Include="Languages"
-                    ID="CountriesDataSource"
+                    
                     Where="it.ContinentId=@ContinentId"
                     EnableFlattening="false"
                     EnableDelete="true"
@@ -64,10 +63,11 @@
                     DataSourceID="CountriesDataSource" DataKeyNames="Id"
                                         
                     SelectedRowStyle-Font-Bold="true"
-                    CssClass="table-bordered table-hover"
+                    CssClass="table-bordered table-hover table"
 
                     OnSelectedIndexChanged="CountriesGrid_SelectedIndexChanged"
                     OnRowDataBound="CountriesGrid_RowDataBound">
+                    
                     <Columns>
                         <asp:BoundField DataField="Name" HeaderText="Country Name" SortExpression="Name" />
                         <asp:TemplateField HeaderText="Languages">
@@ -82,44 +82,72 @@
                         <p>Empty countries list recieved.</p>
                     </EmptyDataTemplate>
                     
-                    <PagerSettings FirstPageText="First" LastPageText="Last" PageButtonCount="5" Position="Bottom" NextPageText="Next" PreviousPageText="Previous" Mode="NumericFirstLast" />
+                    <PagerSettings FirstPageText="First" LastPageText="Last" 
+                        PageButtonCount="5" Position="Bottom" NextPageText="Next" 
+                        PreviousPageText="Previous" Mode="NumericFirstLast" />
                 </asp:GridView>
             </div>
-            <div class="span2">
+            <%--<div class="span2">
                 <a href="EditCountries.aspx" class="btn-info btn">Edit countries/towns</a>
-            </div>
+            </div>--%>
           
             <div class="span5">
                 <h3 class="text-center">Towns:</h3>
-                <asp:EntityDataSource ID="TownsDataSource" ConnectionString="name=WorldEntities"
-                    DefaultContainerName="WorldEntities" EntitySetName="Towns"
-                    Where="it.CountryId=@CountryId" runat="server">
+                <asp:EntityDataSource 
+                    ID="TownsDataSource"
+                     
+                    ConnectionString="name=WorldEntities" DefaultContainerName="WorldEntities" EntitySetName="Towns"
+                    Where="it.CountryId=@CountryId" runat="server" EnableInsert="true" EnableFlattening="false" 
+                    EnableUpdate="true" EnableDelete="true">
                     <WhereParameters>
                         <asp:ControlParameter Name="CountryId" Type="Int32" ControlID="CountriesGrid" />
                     </WhereParameters>
                 </asp:EntityDataSource>
 
-                <asp:ListView ID="TownsListView" runat="server" DataSourceID="TownsDataSource" DataKeyNames="Id">
-                    <LayoutTemplate>                    
-                            
+                <asp:ListView 
+                    ID="TownsListView" 
+                    
+                    runat="server" DataSourceID="TownsDataSource" DataKeyNames="Id" 
+                    InsertItemPosition="LastItem" ViewStateMode="Enabled" ItemType="World.Data.Town">
+
+                    <LayoutTemplate>
                             <ul class="unstyled">
                                 <asp:PlaceHolder ID="itemPlaceholder" runat="server"></asp:PlaceHolder>
                             </ul>                    
                     </LayoutTemplate>
 
                     <ItemTemplate>
-                        <li><%#: Eval("Name") %></li>
+                        <li><div>Nam: </div> <%#: Eval("Name") %></li>
                     </ItemTemplate>
 
+                    <InsertItemTemplate>
+                        <li>                            
+                            <asp:TextBox ID="newTownName" runat="server" Text=<%#: BindItem.Name %>></asp:TextBox>                           
+                            <asp:DropDownList runat="server" ID="CountriesAdd" 
+                                DataSourceID="CountriesDataSource" 
+                                DataTextField="Name" 
+                                DataValueField="Id" 
+                                SelectedValue="<%# BindItem.CountryId %>" 
+                                AppendDataBoundItems="true">   
+                                <asp:ListItem Text="No text" Value=""></asp:ListItem>                             
+                            </asp:DropDownList>
+                            <asp:Button CommandName="Insert" ID="InsertNewTownButton" runat="server" Text="+"/>
+                        </li>                    
+                    </InsertItemTemplate>
+
+                    <SelectedItemTemplate>
+                        <li class="selected-town"><%#: Eval("Name") %></li>
+                    </SelectedItemTemplate>
+
                     <EmptyDataTemplate>
-                        <li>Empty towns list recieved from server.
-                        </li>
+                        <li>Empty towns list recieved from server.</li>
                     </EmptyDataTemplate>
 
                     <EmptyItemTemplate>
                         <li>(empty town name)
                         </li>
                     </EmptyItemTemplate>
+                    
                 </asp:ListView>
 
                 <asp:DataPager ID="TownsListPager" runat="server" 
