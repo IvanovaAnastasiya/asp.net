@@ -1,0 +1,16 @@
+﻿#employees-list{
+    list-style-type:none;
+}
+
+.employee-holder{
+    display:block;
+    border:1px solid skyblue;
+}
+
+#details-element{
+    position:absolute;
+    right:100px;
+    top:100px;
+    background-color:antiquewhite;
+    width:300px;
+}

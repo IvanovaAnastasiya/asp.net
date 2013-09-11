@@ -18,7 +18,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "4.NwEmployeesSPA", "NwEmplo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{174A27EB-FB12-4759-88E9-DD6B8C6ABECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.Repeater", "Repeater\5.Repeater.csproj", "{AB1E05E1-91EF-4449-B972-2E7F0B51709A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5.6.RepeaterAndList", "Repeater\5.6.RepeaterAndList.csproj", "{AB1E05E1-91EF-4449-B972-2E7F0B51709A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "8.EmployeesApp", "EmployeesApp\8.EmployeesApp.csproj", "{EEC7E3F6-FE7E-4127-A356-83003C6CDD78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,10 @@ Global
 		{AB1E05E1-91EF-4449-B972-2E7F0B51709A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB1E05E1-91EF-4449-B972-2E7F0B51709A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB1E05E1-91EF-4449-B972-2E7F0B51709A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC7E3F6-FE7E-4127-A356-83003C6CDD78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC7E3F6-FE7E-4127-A356-83003C6CDD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC7E3F6-FE7E-4127-A356-83003C6CDD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC7E3F6-FE7E-4127-A356-83003C6CDD78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
