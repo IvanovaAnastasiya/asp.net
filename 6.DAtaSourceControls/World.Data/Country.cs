@@ -17,16 +17,17 @@ namespace World.Data
         public Country()
         {
             this.Towns = new HashSet<Town>();
+            this.Languages = new HashSet<Language>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Language { get; set; }
         public int Population { get; set; }
         public int ContinentId { get; set; }
         public byte[] Flag { get; set; }
     
         public virtual Continent Continent { get; set; }
         public virtual ICollection<Town> Towns { get; set; }
+        public virtual ICollection<Language> Languages { get; set; }
     }
 }

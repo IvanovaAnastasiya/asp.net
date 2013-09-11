@@ -18,10 +18,24 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Language" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Population" Type="int" Nullable="false" />
           <Property Name="ContinentId" Type="int" Nullable="false" />
           <Property Name="Flag" Type="image" />
+        </EntityType>
+        <EntityType Name="CountriesLanguages">
+          <Key>
+            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Towns">
           <Key>
@@ -45,6 +59,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_CountriesLanguages_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="CountriesLanguages" Type="Self.CountriesLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CountriesLanguages">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CountriesLanguages_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="CountriesLanguages" Type="Self.CountriesLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CountriesLanguages">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Towns_Countries">
           <End Role="Countries" Type="Self.Countries" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -62,10 +100,20 @@
         <EntityContainer Name="WorldModelStoreContainer">
           <EntitySet Name="Continents" EntityType="Self.Continents" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="CountriesLanguages" EntityType="Self.CountriesLanguages" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <EntitySet Name="Towns" EntityType="Self.Towns" Schema="dbo" p3:Type="Tables" xmlns:p3="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_Countries_Continents" Association="Self.FK_Countries_Continents">
             <End Role="Continents" EntitySet="Continents" />
             <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CountriesLanguages_Countries" Association="Self.FK_CountriesLanguages_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="CountriesLanguages" EntitySet="CountriesLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CountriesLanguages_Languages" Association="Self.FK_CountriesLanguages_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="CountriesLanguages" EntitySet="CountriesLanguages" />
           </AssociationSet>
           <AssociationSet Name="FK_Towns_Countries" Association="Self.FK_Towns_Countries">
             <End Role="Countries" EntitySet="Countries" />
@@ -91,12 +139,20 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Population" Type="Int32" Nullable="false" />
           <Property Name="ContinentId" Type="Int32" Nullable="false" />
           <Property Name="Flag" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Continent" Relationship="Self.FK_Countries_Continents" FromRole="Countries" ToRole="Continents" />
           <NavigationProperty Name="Towns" Relationship="Self.FK_Towns_Countries" FromRole="Countries" ToRole="Towns" />
+          <NavigationProperty Name="Languages" Relationship="Self.CountriesLanguages" FromRole="Countries" ToRole="Languages" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Countries" Relationship="Self.CountriesLanguages" FromRole="Languages" ToRole="Countries" />
         </EntityType>
         <EntityType Name="Town">
           <Key>
@@ -135,9 +191,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CountriesLanguages">
+          <End Role="Countries" Type="Self.Country" Multiplicity="*" />
+          <End Role="Languages" Type="Self.Language" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="WorldEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Continents" EntityType="Self.Continent" />
           <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
           <EntitySet Name="Towns" EntityType="Self.Town" />
           <AssociationSet Name="FK_Countries_Continents" Association="Self.FK_Countries_Continents">
             <End Role="Continents" EntitySet="Continents" />
@@ -146,6 +207,10 @@
           <AssociationSet Name="FK_Towns_Countries" Association="Self.FK_Towns_Countries">
             <End Role="Countries" EntitySet="Countries" />
             <End Role="Towns" EntitySet="Towns" />
+          </AssociationSet>
+          <AssociationSet Name="CountriesLanguages" Association="Self.CountriesLanguages">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Languages" EntitySet="Languages" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -167,10 +232,17 @@
               <MappingFragment StoreEntitySet="Countries">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Language" ColumnName="Language" />
                 <ScalarProperty Name="Population" ColumnName="Population" />
                 <ScalarProperty Name="ContinentId" ColumnName="ContinentId" />
                 <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="WorldModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -183,6 +255,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="CountriesLanguages" TypeName="WorldModel.CountriesLanguages" StoreEntitySet="CountriesLanguages">
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="Id" ColumnName="CountryId" />
+            </EndProperty>
+            <EndProperty Name="Languages">
+              <ScalarProperty Name="Id" ColumnName="LanguageId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

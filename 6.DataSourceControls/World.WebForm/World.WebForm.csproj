@@ -65,10 +65,18 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EditContinents.aspx" />
     <Content Include="Web.config" />
     <Content Include="World.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditContinents.aspx.cs">
+      <DependentUpon>EditContinents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditContinents.aspx.designer.cs">
+      <DependentUpon>EditContinents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.aspx.cs">
       <DependentUpon>World.aspx</DependentUpon>

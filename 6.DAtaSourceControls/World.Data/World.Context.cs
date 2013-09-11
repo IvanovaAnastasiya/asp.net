@@ -27,6 +27,7 @@ namespace World.Data
     
         public DbSet<Continent> Continents { get; set; }
         public DbSet<Country> Countries { get; set; }
+        public DbSet<Language> Languages { get; set; }
         public DbSet<Town> Towns { get; set; }
     }
 }
