@@ -35,5 +35,41 @@ namespace World.WebForm
 
             return builder.ToString();
         }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void CountriesGrid_DeleteItem(int id)
+        {
+            using (var context = new Data.WorldEntities())
+            {
+                var country = context.Countries.Include("Towns").FirstOrDefault(c => c.Id == id);
+                if (country == null)
+                {
+                    return;
+                }
+
+                var towns = country.Towns;
+                if (towns.Count > 0)
+                {
+                    foreach (var town in towns)
+                    {
+                        context.Towns.Remove(town);
+                    }
+                }
+
+                context.Countries.Remove(country);
+                context.SaveChanges();
+            }
+        }
+
+        protected void CountriesGrid_RowDataBound(object sender,
+        GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = 
+                    ClientScript.GetPostBackClientHyperlink(this.CountriesGrid, "Select$" + e.Row.RowIndex);
+            }
+        }
+        
     }
 }

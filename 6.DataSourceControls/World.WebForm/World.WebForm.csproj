@@ -66,6 +66,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EditContinents.aspx" />
+    <Content Include="EditCountries.aspx" />
+    <Content Include="scripts\css\bootstrap-responsive.css" />
+    <Content Include="scripts\css\bootstrap-responsive.min.css" />
+    <Content Include="scripts\css\bootstrap.css" />
+    <Content Include="scripts\css\bootstrap.min.css" />
+    <Content Include="scripts\img\glyphicons-halflings-white.png" />
+    <Content Include="scripts\img\glyphicons-halflings.png" />
+    <None Include="scripts\jquery-2.0.3.intellisense.js" />
+    <Content Include="scripts\jquery-2.0.3.js" />
+    <Content Include="scripts\jquery-2.0.3.min.js" />
+    <Content Include="scripts\js\bootstrap.js" />
+    <Content Include="scripts\js\bootstrap.min.js" />
+    <Content Include="styles\editContinents.css" />
+    <Content Include="styles\main.css" />
     <Content Include="Web.config" />
     <Content Include="World.aspx" />
   </ItemGroup>
@@ -76,6 +90,13 @@
     </Compile>
     <Compile Include="EditContinents.aspx.designer.cs">
       <DependentUpon>EditContinents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditCountries.aspx.cs">
+      <DependentUpon>EditCountries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditCountries.aspx.designer.cs">
+      <DependentUpon>EditCountries.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.aspx.cs">
@@ -88,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="scripts\jquery-2.0.3.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
