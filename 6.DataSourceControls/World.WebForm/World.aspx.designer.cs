@@ -31,15 +31,6 @@ namespace World.WebForm {
         protected global::System.Web.UI.WebControls.EntityDataSource ContinentsDataSource;
         
         /// <summary>
-        /// SelectedContinent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox SelectedContinent;
-        
-        /// <summary>
         /// CountriesDataSource control.
         /// </summary>
         /// <remarks>
@@ -49,15 +40,6 @@ namespace World.WebForm {
         protected global::System.Web.UI.WebControls.EntityDataSource CountriesDataSource;
         
         /// <summary>
-        /// CountriesGrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView CountriesGrid;
-        
-        /// <summary>
         /// TownsDataSource control.
         /// </summary>
         /// <remarks>
@@ -65,6 +47,24 @@ namespace World.WebForm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.EntityDataSource TownsDataSource;
+        
+        /// <summary>
+        /// SelectedContinent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox SelectedContinent;
+        
+        /// <summary>
+        /// CountriesGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView CountriesGrid;
         
         /// <summary>
         /// TownsListView control.
