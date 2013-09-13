@@ -94,7 +94,7 @@
                         <td><%# Item.Name %></td>
                         <td><%# Item.Population %></td>
                         <td><%# Item.Continent.Name %></td>
-                        <td><%# GetLanguages(Item.Languages)%> <a href="EditLanguages.aspx?countryId=<%# Item.Id %>" class="btn-link"><sup class="text-info>Change..</sup></a></td>
+                        <td><%# GetLanguages(Item.Languages)%> <a href="EditLanguages.aspx?countryId=<%# Item.Id %>" class="btn-link"><sup class="text-info">Change..</sup></a></td>
                         <td>
                             <asp:Image runat="server" ImageUrl='<%# ConvertToBase64((byte[])Item.Flag)%>'/>
                         </td>
