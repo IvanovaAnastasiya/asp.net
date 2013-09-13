@@ -10,34 +10,16 @@
 namespace World.WebForm {
     
     
-    public partial class EditCountries {
+    public partial class EditTowns {
         
         /// <summary>
-        /// editCountriesForm control.
+        /// editTowns control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm editCountriesForm;
-        
-        /// <summary>
-        /// ContinentsDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource ContinentsDataSource;
-        
-        /// <summary>
-        /// LanguagesDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource LanguagesDataSource;
+        protected global::System.Web.UI.HtmlControls.HtmlForm editTowns;
         
         /// <summary>
         /// CountriesDataSource control.
@@ -49,21 +31,39 @@ namespace World.WebForm {
         protected global::System.Web.UI.WebControls.EntityDataSource CountriesDataSource;
         
         /// <summary>
-        /// SelectedContinent control.
+        /// TownsDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SelectedContinent;
+        protected global::System.Web.UI.WebControls.EntityDataSource TownsDataSource;
         
         /// <summary>
-        /// CountriesListView control.
+        /// LabelForCountriesList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView CountriesListView;
+        protected global::System.Web.UI.WebControls.Label LabelForCountriesList;
+        
+        /// <summary>
+        /// CountriesDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList CountriesDropDownList;
+        
+        /// <summary>
+        /// TownsListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView TownsListView;
     }
 }

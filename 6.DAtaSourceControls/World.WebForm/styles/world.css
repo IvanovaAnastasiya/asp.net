@@ -2,3 +2,15 @@
     font-size:larger;
     padding:20px 50px;
 }
+
+.text-box-small {
+    width:80px;
+}
+
+.text-box-meduim {
+    width:150px;
+}
+
+.text-box-large {
+    width:200px;
+}
