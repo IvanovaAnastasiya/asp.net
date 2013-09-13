@@ -51,6 +51,8 @@ namespace World.WebForm
 
         protected void EditContinent_Click(object sender, EventArgs e)
         {
+            Page.Validate("EditContinent");
+
             if (this.SelectedContinent.SelectedItem == null)
             {
                 this.ErrorMessageHolder.InnerText = "No continent selected";
@@ -82,6 +84,8 @@ namespace World.WebForm
 
         protected void AddNewContinent_Click(object sender, EventArgs e)
         {
+            Page.Validate("InsertContinent");
+
             var newName = this.NewContinentName.Text;
             if (newName.Length < 4 || newName.Length > 50)
             {

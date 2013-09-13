@@ -7,6 +7,7 @@
     <title>Edit Countries</title>
     <link href="scripts/css/bootstrap-responsive.min.css" rel="stylesheet" />
     <link href="scripts/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="styles/editCountries.css" rel="stylesheet" />
 
     <script src="scripts/jquery-2.0.3.min.js"></script>
     <script src="scripts/js/bootstrap.min.js"></script>
@@ -55,7 +56,8 @@
             </asp:DropDownList>
             </div>
 
-            <asp:ListView ID="CountriesListView" DataSourceID="CountriesDataSource" DataKeyNames="Id" runat="server" ItemType="World.Data.Country">
+            <asp:ListView ID="CountriesListView" DataSourceID="CountriesDataSource" 
+                DataKeyNames="Id" runat="server" ItemType="World.Data.Country">
                 <LayoutTemplate>
                     <table runat="server" class="table span9"> 
                         <tr runat="server">
@@ -63,9 +65,9 @@
                             <th>Country Name</th>
                             <th>Population</th>
                             <th>Continent</th>
-                            <th>Languages</th>
-                            <th>Commands</th>
+                            <th>Languages</th>                            
                             <th>Flag</th>
+                            <th>Actions</th>
                         </tr>
                         <tr runat="server" id="itemPlaceholder">
 
@@ -92,13 +94,13 @@
                         <td><%# Item.Name %></td>
                         <td><%# Item.Population %></td>
                         <td><%# Item.Continent.Name %></td>
-                        <td><%# GetLanguages(Item.Languages)%> <a href="EditLanguages.aspx?countryId=<%# Item.Id %>">Edit..</a></td>
+                        <td><%# GetLanguages(Item.Languages)%> <a href="EditLanguages.aspx?countryId=<%# Item.Id %>" class="btn-link"><sup class="text-info>Change..</sup></a></td>
+                        <td>
+                            <asp:Image runat="server" ImageUrl='<%# ConvertToBase64((byte[])Item.Flag)%>'/>
+                        </td>
                         <td>
                             <asp:Button runat="server" ID="EditCountryButton" CommandName="Edit" Text="Edit" CssClass="btn btn-mini" />
                             <asp:Button runat="server" ID="DeleteCountryButton" CommandName="Delete" Text="X" CssClass="btn btn-mini btn-danger"/>
-                        </td>
-                        <td>
-                            <image src='<%= "data:image/jpeg;base64," + ConvertToBase64((byte[])Eval("Flag"))%>'/>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -150,15 +152,14 @@
                             <asp:Label Text='<%# GetLanguages(Item.Languages) %> ' runat="server"/>
                         </td>
                         <td>
-                            <asp:Button CommandName="Update" runat="server" Text="Update"  CssClass="btn btn-mini" ValidationGroup="CountryEdit"/>
-                            <asp:Button CommandName="Cancel" runat="server" Text="Cancel"  CssClass="btn btn-mini" />
-                            <asp:Button CommandName="ChangeFlag" runat="server" Text="ChangeFlag" CssClass="btn btn-mini" 
-                                CommandArgument="<%# Item.Id %>" ID="ChangeFlagButton" OnCommand="ChangeFlagButton_Command" />
+                            <asp:FileUpload runat="server" />
                         </td>
                         <td>
-                            
-                            <%--<asp:Image runat="server" Id="ImageUpload"
-                            ImageUrl="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAsMAAAGhCAIAAAALOi7ZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QgLEhM6PUSGrwAAIABJREFUeNq8vcuSLEmWHKZ6jnlEZt5761Z3T/eAHAICAYRcEALsuOCWPzbzDfwP/gKXWJACoRDCBSkEBgPhADKY7qnu+4wIdztHuThmHh55q2t6ho+SlpaqyMwID3ez89CjqsY//dM//bM/+zMc/pGE3//PT/z09/1I0t/1Rz/x+o9+0I++vv/n8fU/8MW/9U9+9JVvL/v/u1cy86cv5ttfePXKq//8fTfhp+/qT3/oq8v+6V/+Ay/v25/+4X/46nqO"/></td>--%>
+                            <asp:Button CommandName="Update" runat="server" Text="Update"  CssClass="btn btn-mini" ValidationGroup="CountryEdit" />
+                            <asp:Button CommandName="Cancel" runat="server" Text="Cancel"  CssClass="btn btn-mini" />
+                            <asp:Button CommandName="ChangeFlag" runat="server" Text="ChangeFlag" CssClass="btn btn-mini" 
+                                CommandArgument="<%# Item.Id %>" ID="ChangeFlagButton" OnCommand="ChangeFlagButton_Command"/>
+                        </td>
                     </tr>
                 </EditItemTemplate>
 
@@ -231,11 +232,11 @@
                              Class="btn btn-mini" Text="Toggle Inser Form"/>
                     </div>
                 </EmptyDataTemplate>
-            </asp:ListView>
-            <asp:Label runat="server" AssociatedControlID="UploadFile" Text="Select Image to Set as flag" ToolTip="select witch country to add the flag to" />
-            <asp:FileUpload ID="UploadFile" runat="server" />
+            </asp:ListView>            
         </div>
-
+        <div class="error-message" id="error-container">
+            <asp:Literal ID="ErrorMessage" runat="server" ViewStateMode="Disabled"/>
+        </div>
 
         <div class="row-fluid text-center">
             <a href="World.aspx" class="btn btn-primary">Back to main</a>

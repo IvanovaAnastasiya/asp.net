@@ -21,40 +21,62 @@
 
         <div class="row-fluid">
             <h2 class="text-center span12 page-header large">Continents:</h2>   
-        </div>        
-        <div class="row-fluid text-center">           
-            <%--ListBox escapes its content--%>
-            <asp:ListBox runat="server"
-                DataSourceID="ContinentsDataSource"
-                DataTextField="Name" DataValueField="Id"
-                AutoPostBack="true" ID="SelectedContinent"
-                SelectionMode="Single"
-                Rows="10"
-                OnSelectedIndexChanged="SelectedContinent_SelectedIndexChanged" CssClass="span2 primary-text" />
-            <%-- <asp:LoginView runat="server"></asp:LoginView>--%>       
+        </div>  
+              
+        <div class="row-fluid">
+            <fieldset class="span4 text-center">
+                <legend>Edit selected continent</legend>
+                <asp:TextBox runat="server" ID="EditContinentName"></asp:TextBox>
+                <div class="text-center">
+                    <asp:Button runat="server" ID="EditContinent" OnClick="EditContinent_Click" 
+                        Text="Change Selected Continent" CssClass="btn-primary btn" ValidationGroup="EditContinent" />
+                </div>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="EditContinentName" 
+                    ErrorMessage="Required field" ValidationGroup="EditContinent" EnableClientScript="false" Text="*"/>
+                <asp:RegularExpressionValidator runat="server" ControlToValidate="EditContinentName" 
+                    ErrorMessage="Must start with Capital Letter<br/>Must have only letters<br/>Length 4 - 50 symols!"
+                    ValidationExpression="[A-Z][A-Za-z]{0,49}" ValidationGroup="EditContinent" EnableClientScript="false" Text="*"/>
+                <asp:ValidationSummary EnableClientScript="false" ValidationGroup="EditContinent" runat="server"  />
+            </fieldset>
+            
+            <div class="span4 text-center">
+                <%--ListBox escapes its content--%>
+                <asp:ListBox runat="server"
+                    DataSourceID="ContinentsDataSource"
+                    DataTextField="Name" DataValueField="Id"
+                    AutoPostBack="true" ID="SelectedContinent"
+                    SelectionMode="Single"
+                    Rows="10"
+                    OnSelectedIndexChanged="SelectedContinent_SelectedIndexChanged" />
+                <%-- <asp:LoginView runat="server"></asp:LoginView>--%>
 
-            <asp:Button runat="server" ID="DeleteContintent" OnClick="DeleteContintent_Click" Text="Delete Selected Continent" CssClass="btn-danger btn"/> 
-        </div>
-        <div class="row-fluid text-center">
-            <span class="text-error span12"   runat="server" id="ErrorMessageHolder" ></span>
-        </div>
-        
-        <fieldset class="row-fluid text-center">
-            <legend>Edit selected continent</legend>
-            <asp:TextBox runat="server" ID="EditContinentName"></asp:TextBox>         
-            <asp:Button runat="server" ID="EditContinent" OnClick="EditContinent_Click" Text="Edit Selected Continent" CssClass="btn-primary btn"/> 
-        </fieldset>
-
-        <fieldset class="row-fluid text-center">
-            <legend>Add new Continent</legend>
-            <asp:Label AssociatedControlID="NewContinentName" runat="server">New Continent Name</asp:Label>
-            <asp:TextBox ID="NewContinentName" runat="server" Columns="20"></asp:TextBox>
-            <div class="row-fluid text-center">
-                <asp:Button runat="server" ID="AddNewContinent" OnClick="AddNewContinent_Click" Text="Add new Continent" CssClass="btn-primary btn" />
+                <div class="text-center">
+                    <asp:Button runat="server" ID="DeleteContintent" OnClick="DeleteContintent_Click"
+                        Text="Delete Selected Continent" CssClass="btn-danger btn" />
+                </div>
             </div>
-        </fieldset>
 
-        <a href="World.aspx" class="btn btn-info">Back to main page</a>
+            <fieldset class="span4 text-center">
+                <legend>Add new Continent</legend>
+                <asp:Label AssociatedControlID="NewContinentName" runat="server">New Continent Name</asp:Label>
+                <asp:TextBox ID="NewContinentName" runat="server" Columns="20"></asp:TextBox>
+                <div class="row-fluid text-center">
+                    <asp:Button runat="server" ID="AddNewContinent" OnClick="AddNewContinent_Click" 
+                        Text="Add new Continent" CssClass="btn-primary btn" ValidationGroup="InsertContinent" />
+                </div>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="NewContinentName" 
+                    ErrorMessage="Required field" ValidationGroup="InsertContinent" EnableClientScript="false" Text="*"/>
+                <asp:RegularExpressionValidator runat="server" ControlToValidate="NewContinentName" 
+                    ErrorMessage="Must start with Capital Letter<br/>Must have only letters<br/>Length 4 - 50 symols!"
+                    ValidationExpression="[A-Z][A-Za-z]{0,49}" ValidationGroup="InsertContinent" EnableClientScript="false" ValidateRequestMode="Enabled" Text="*"/>
+                <asp:ValidationSummary EnableClientScript="false" ValidationGroup="InsertContinent" runat="server" CssClass="text-error"/>
+            </fieldset>
+        </div>
+
+        <div class="row-fluid text-center">
+            <span class="text-error span12"  runat="server" id="ErrorMessageHolder" ></span>
+        </div>
+        <div class="text-center"><a href="World.aspx" class="btn btn-primary">Back to main page</a></div>
     </form>
     
 </body>

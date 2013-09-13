@@ -75,6 +75,15 @@ namespace World.WebForm
         {
             
         }
-        
+
+        protected string ConvertToBase64(byte[] file)
+        {
+            if (file == null)
+            {
+                return "#";
+            }
+
+            return "data:image/jpeg;base64," + Convert.ToBase64String(file);
+        }   
     }
 }

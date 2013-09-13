@@ -14,34 +14,28 @@
 </head>
 <body class="container-fluid">    
     <form id="worldForm" runat="server" class="container-fluid active text-center">
-        <div class="row-fluid text-center" >
-            <div class="page-header">
-                <h1>Main Page</h1>
-            </div>
-        </div>        
-        
-        <div class="row-fluid">
-            <asp:EntityDataSource runat="server"
-                ConnectionString="name=WorldEntities"
-                DefaultContainerName="WorldEntities"
-                EntitySetName="Continents"
-                ID="ContinentsDataSource" />
+        <%--Data source controls--%>  
+        <asp:EntityDataSource runat="server"
+            ConnectionString="name=WorldEntities"
+            DefaultContainerName="WorldEntities"
+            EntitySetName="Continents"
+            ID="ContinentsDataSource" />
 
-             <asp:EntityDataSource ID="CountriesDataSource"                    
-                    runat="server" ConnectionString="name=WorldEntities" DefaultContainerName="WorldEntities"
-                    EntitySetName="Countries" Include="Languages"
+        <asp:EntityDataSource ID="CountriesDataSource"                    
+                runat="server" ConnectionString="name=WorldEntities" DefaultContainerName="WorldEntities"
+                EntitySetName="Countries" Include="Languages"
                     
-                    Where="it.ContinentId=@ContinentId"
-                    EnableFlattening="false"
-                    EnableDelete="true"
-                    EnableInsert="true"
-                    EnableUpdate="true">
-                    <WhereParameters>
-                        <asp:ControlParameter Name="ContinentId" Type="Int32" ControlID="SelectedContinent" />
-                    </WhereParameters>
-                </asp:EntityDataSource>
+                Where="it.ContinentId=@ContinentId"
+                EnableFlattening="false"
+                EnableDelete="true"
+                EnableInsert="true"
+                EnableUpdate="true">
+                <WhereParameters>
+                    <asp:ControlParameter Name="ContinentId" Type="Int32" ControlID="SelectedContinent" />
+                </WhereParameters>
+            </asp:EntityDataSource>
 
-            <asp:EntityDataSource 
+        <asp:EntityDataSource 
                     ID="TownsDataSource"
                      
                     ConnectionString="name=WorldEntities" DefaultContainerName="WorldEntities" EntitySetName="Towns"
@@ -51,23 +45,36 @@
                         <asp:ControlParameter Name="CountryId" Type="Int32" ControlID="CountriesGrid" />
                     </WhereParameters>
                 </asp:EntityDataSource>
-
-            <h2>Continents:</h2>
-            <%--ListBox escapes its content--%>
-            <asp:ListBox runat="server"
-                DataSourceID="ContinentsDataSource"
-                DataTextField="Name" DataValueField="Id"
-                AutoPostBack="true" ID="SelectedContinent"
-                SelectionMode="Single"
-                Rows="8" 
-                CssClass="media"/>
-            <a href="EditContinents.aspx" class="btn-info btn btn-large">Edit Continents</a>
+        
+        <div class="navbar-fixed-top">
+            <a href="EditContinents.aspx" class="btn-info btn">Edit Continents</a>
+            <a href="EditCountries.aspx" class="btn btn-info">Edit Countries</a>
+            <a href="EditTowns.aspx" class="btn btn-info">Edit towns</a>
         </div>
-          <hr />
-        <div class="row-fluid clear-fix">
-            <div class="span5">                
-                <h3>Countries</h3>
-               
+        
+        <div class="row-fluid text-center" >
+            <div class="page-header">
+                <h1>Main Page</h1>
+            </div>
+        </div> 
+        
+        <div class="row-fluid">
+            <div class="span2">
+                <h2>Continents:</h2>
+                <div>
+                    <%--ListBox escapes its content--%>
+                    <asp:ListBox runat="server"
+                        DataSourceID="ContinentsDataSource"
+                        DataTextField="Name" DataValueField="Id"
+                        AutoPostBack="true" ID="SelectedContinent"
+                        SelectionMode="Single"
+                        Rows="8"
+                        CssClass="media" />
+                </div>                
+            </div>
+            
+            <div class="span8">                
+                <h3>Countries</h3>               
 
                 <%--GridView escapes its content--%>
                 <asp:GridView runat="server" ID="CountriesGrid"
@@ -88,7 +95,12 @@
                                 <%#: GetLanguages((IEnumerable<World.Data.Language>)Eval("Languages")) %>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField DataField="Population" HeaderText="Population" SortExpression="Population" />                                        
+                        <asp:BoundField DataField="Population" HeaderText="Population" SortExpression="Population" /> 
+                        <asp:TemplateField runat="server">
+                            <ItemTemplate>
+                                <asp:Image runat="server" ImageUrl='<%# ConvertToBase64((byte[])Eval("Flag")) %>' />
+                            </ItemTemplate>
+                        </asp:TemplateField>                                       
                     </Columns>
 
                     <EmptyDataTemplate>
@@ -99,13 +111,10 @@
                         PageButtonCount="5" Position="Bottom" NextPageText="Next" 
                         PreviousPageText="Previous" Mode="NumericFirstLast" />
                 </asp:GridView>
-                <a href="EditCountries.aspx" class="btn btn-info">Edit Countries</a>
-            </div>
-            <%--<div class="span2">
-                <a href="EditCountries.aspx" class="btn-info btn">Edit countries/towns</a>
-            </div>--%>
+                
+            </div>            
           
-            <div class="span5">
+            <div class="span2">
                 <h3 class="text-center">Towns:</h3>
                 
                 <asp:ListView 
@@ -138,8 +147,7 @@
                         <li>(empty town name)</li>
                     </EmptyItemTemplate>
                     
-                </asp:ListView>
-                <a class="btn btn-info" href="EditTowns.aspx">Edit towns</a> 
+                </asp:ListView>                
 
                 <asp:DataPager ID="TownsListPager" runat="server" 
                     PagedControlID="TownsListView" PageSize="5">
@@ -147,8 +155,9 @@
                         <asp:NumericPagerField />                       
                     </Fields>
                 </asp:DataPager>
-             </div>
-        </div>
+                </div>
+        </div>         
+        
        
     </form>
 </body>

@@ -9,7 +9,7 @@
     <script src="scripts/jquery-2.0.3.min.js"></script>
     <link href="scripts/css/bootstrap-responsive.css" rel="stylesheet" />
     <link href="styles/editTowns.css" rel="stylesheet" />
-
+    <link href="styles/world.css" rel="stylesheet" />
     <link href="scripts/css/bootstrap.css" rel="stylesheet" />
     <script src="scripts/js/bootstrap.js"></script>
 </head>
@@ -94,7 +94,7 @@
                         <td><%#: Item.Country.Name %></td>
                         <td>
                             <asp:Button CommandName="Edit" Text="Edit" runat="server" CssClass="btn-mini btn"/>
-                            <asp:Button ID="DeleteButton" CommandName="Delete" Text="X" runat="server" CssClass="btn-mini btn"/>
+                            <asp:Button ID="DeleteButton" CommandName="Delete" Text="X" runat="server" CssClass="btn-mini btn btn-danger"/>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -103,13 +103,13 @@
                     <tr>
                         <td><%#: Item.Id %></td>
                         <td>
-                            <asp:TextBox runat="server" ID="EditTownNameTextBox" Text='<%# BindItem.Name %>' />
+                            <asp:TextBox runat="server" ID="EditTownNameTextBox" Text='<%# BindItem.Name %>' CssClass="text-box-small"/>
                             <asp:RequiredFieldValidator ControlToValidate="EditTownNameTextBox" runat="server"  
                                 ErrorMessage="Required Field!" 
                                 Text="*"
                                 EnableClientScript="false"/>
                             <asp:RegularExpressionValidator ControlToValidate="EditTownNameTextBox" runat="server" 
-                                ValidationExpression="[A-Z][A-Za-z'\s]{0,100}" 
+                                ValidationExpression="[A-Z][A-Za-z'\s]{0,99}" 
                                 ErrorMessage="Must start with capital letter!<br/> 1 to 100 letters long. Only letters, space and ' allowed!"
                                 Text="*"
                                 ToolTip="Error"
@@ -118,7 +118,7 @@
                         </td>
                         <td>
                             <asp:DropDownList runat="server" DataSourceID="CountriesDataSource" ID="CountriesSelectDropDownList"
-                                DataValueField="Id" DataTextField="Name" SelectedValue='<%# BindItem.CountryId %>'>
+                                DataValueField="Id" DataTextField="Name" SelectedValue='<%# BindItem.CountryId %>' CssClass="text-box-meduim">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="CountriesSelectDropDownList"
                                 ErrorMessage="Required Field" Text="*" EnableClientScript="false"/>
@@ -147,7 +147,7 @@
                                 Text="*"
                                 EnableClientScript="false"/>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ControlToValidate="InsertTownNameTextBox" runat="server" 
-                                ValidationExpression="[A-Z][A-Za-z'\s]{0,100}" 
+                                ValidationExpression="[A-Z][A-Za-z'\s]{0,99}" 
                                 ErrorMessage="Start with capital! 1 to 100 long. letters, space and ' allowed!" 
                                 ToolTip="Start with capital! 1 to 100 long. letters, space and ' allowed!"
                                 Text="*"

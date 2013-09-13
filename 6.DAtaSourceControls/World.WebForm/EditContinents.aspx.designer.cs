@@ -31,33 +31,6 @@ namespace World.WebForm {
         protected global::System.Web.UI.WebControls.EntityDataSource ContinentsDataSource;
         
         /// <summary>
-        /// SelectedContinent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox SelectedContinent;
-        
-        /// <summary>
-        /// DeleteContintent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button DeleteContintent;
-        
-        /// <summary>
-        /// ErrorMessageHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrorMessageHolder;
-        
-        /// <summary>
         /// EditContinentName control.
         /// </summary>
         /// <remarks>
@@ -76,6 +49,24 @@ namespace World.WebForm {
         protected global::System.Web.UI.WebControls.Button EditContinent;
         
         /// <summary>
+        /// SelectedContinent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox SelectedContinent;
+        
+        /// <summary>
+        /// DeleteContintent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteContintent;
+        
+        /// <summary>
         /// NewContinentName control.
         /// </summary>
         /// <remarks>
@@ -92,5 +83,14 @@ namespace World.WebForm {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AddNewContinent;
+        
+        /// <summary>
+        /// ErrorMessageHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrorMessageHolder;
     }
 }
