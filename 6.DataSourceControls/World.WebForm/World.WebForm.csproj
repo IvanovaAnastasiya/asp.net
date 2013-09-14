@@ -67,6 +67,7 @@
   <ItemGroup>
     <Content Include="EditContinents.aspx" />
     <Content Include="EditCountries.aspx" />
+    <Content Include="EditLanguages.aspx" />
     <Content Include="EditTowns.aspx" />
     <Content Include="scripts\css\bootstrap-responsive.css" />
     <Content Include="scripts\css\bootstrap-responsive.min.css" />
@@ -99,6 +100,13 @@
     </Compile>
     <Compile Include="EditCountries.aspx.designer.cs">
       <DependentUpon>EditCountries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditLanguages.aspx.cs">
+      <DependentUpon>EditLanguages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditLanguages.aspx.designer.cs">
+      <DependentUpon>EditLanguages.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditTowns.aspx.cs">
       <DependentUpon>EditTowns.aspx</DependentUpon>

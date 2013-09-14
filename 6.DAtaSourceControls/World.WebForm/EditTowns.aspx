@@ -22,13 +22,13 @@
         </div>   
 
         <asp:EntityDataSource 
-            ID="CountriesDataSource"                    
+            ID="CountriesDataSource"
             runat="server" ConnectionString="name=WorldEntities" DefaultContainerName="WorldEntities"
             EntitySetName="Countries"
             EnableFlattening="false"/> 
         
         <asp:EntityDataSource 
-            ID="TownsDataSource"                                     
+            ID="TownsDataSource"
             ConnectionString="name=WorldEntities" DefaultContainerName="WorldEntities" EntitySetName="Towns" Include="Country"
             runat="server" EnableFlattening="false" EnableUpdate="true" EnableInsert="true" AutoSort="true" 
             EnableDelete="true" OnDeleting="TownsDataSource_Deleting"
@@ -59,7 +59,7 @@
                             <th runat="server">Town Name</th>
                             <th runat="server">In Country</th>
                         </tr>
-                        <tr runat="server" id="itemPlaceholder">                            
+                        <tr runat="server" id="itemPlaceholder">
                         </tr>
                         <tr runat="server" id="emptyItemPlaceholder"></tr>
                         <tr runat="server">
@@ -118,22 +118,22 @@
                         </td>
                         <td>
                             <asp:DropDownList runat="server" DataSourceID="CountriesDataSource" ID="CountriesSelectDropDownList"
-                                DataValueField="Id" DataTextField="Name" SelectedValue='<%# BindItem.CountryId %>'>                                
+                                DataValueField="Id" DataTextField="Name" SelectedValue='<%# BindItem.CountryId %>'>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="CountriesSelectDropDownList" 
-                                ErrorMessage="Required Field" Text="*" EnableClientScript="false"/>                           
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="CountriesSelectDropDownList"
+                                ErrorMessage="Required Field" Text="*" EnableClientScript="false"/>
                         </td>
                         <td>
                             <asp:Button ID="UpdateButton" CommandName="Update" Text="Update" runat="server" CssClass="btn-mini btn"/>
-                            <asp:Button ID="CancelButton" CommandName="Cancel" Text="Cancel" runat="server" CssClass="btn-mini btn"/>                            
+                            <asp:Button ID="CancelButton" CommandName="Cancel" Text="Cancel" runat="server" CssClass="btn-mini btn"/>
                         </td>
                     </tr>
                 </EditItemTemplate>
 
-                <EmptyDataTemplate>                    
+                <EmptyDataTemplate>
                     <div runat="server" class="span4">
                         <p runat="server">Empty towns list.</p>
-                        <asp:Button runat="server" ID="ShowInsertOnEmptyDataButton" OnClick="InsertButtonShow_Click" CssClass="btn-mini btn" Text="Show Insert"/>                
+                        <asp:Button runat="server" ID="ShowInsertOnEmptyDataButton" OnClick="InsertButtonShow_Click" CssClass="btn-mini btn" Text="Show Insert"/>
                     </div>
                 </EmptyDataTemplate>
 
@@ -151,18 +151,18 @@
                                 ErrorMessage="Start with capital! 1 to 100 long. letters, space and ' allowed!" 
                                 ToolTip="Start with capital! 1 to 100 long. letters, space and ' allowed!"
                                 Text="*"
-                                EnableClientScript="false" />                            
+                                EnableClientScript="false" />
                         </td>
                         <td runat="server">
                             <asp:DropDownList runat="server" DataSourceID="CountriesDataSource" ID="SelectCountryForInsertDropDownList"
-                                DataValueField="Id" DataTextField="Name" SelectedValue='<%# BindItem.CountryId %>' >                                
-                                <asp:ListItem Value='0'></asp:ListItem>
+                                DataValueField="Id" DataTextField="Name" SelectedValue='<%# BindItem.CountryId %>' >
+                                <asp:ListItem Value='5' Selected="True"></asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td runat="server">
                             <asp:Panel runat="server">
-                                <asp:Button ID="InsertButton" CommandName="Insert" Text="Add" runat="server" CssClass="btn-mini btn" />    
-                            </asp:Panel>                        
+                                <asp:Button ID="InsertButton" CommandName="Insert" Text="Add" runat="server" CssClass="btn-mini btn" />
+                            </asp:Panel>
                         </td>
                     </tr>
                 </InsertItemTemplate>

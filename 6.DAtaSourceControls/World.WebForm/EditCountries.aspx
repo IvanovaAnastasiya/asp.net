@@ -19,7 +19,7 @@
                 <h1>Edit Countries Page</h1>
             </div>
     </div>   
-    <form id="editCountriesForm" runat="server">        
+    <form id="editCountriesForm" runat="server">
           
         <asp:EntityDataSource runat="server"
             ConnectionString="name=WorldEntities"
@@ -33,17 +33,16 @@
             EntitySetName="Languages"
             ID="LanguagesDataSource" />
 
-        <asp:EntityDataSource ID="CountriesDataSource"                    
+        <asp:EntityDataSource ID="CountriesDataSource"
             runat="server" ConnectionString="name=WorldEntities" DefaultContainerName="WorldEntities"
-            EntitySetName="Countries" Include="Languages, Continent"
-                    
+            EntitySetName="Countries" Include="Languages, Continent" 
             Where="it.ContinentId=@ContinentId"
             EnableFlattening="false"
             EnableDelete="true"
             EnableInsert="true"
             EnableUpdate="true"
             OnDeleting="CountriesDataSource_Deleting"
-            OnInserting="CountriesDataSource_Inserting">
+            OnInserted="CountriesDataSource_Inserted">
             <WhereParameters>
                 <asp:ControlParameter Name="ContinentId" Type="Int32" ControlID="SelectedContinent" />
             </WhereParameters>
@@ -62,10 +61,11 @@
                         <tr runat="server">
                             <th>Country Id</th>
                             <th>Country Name</th>
-                            <th>Population</th>                             
+                            <th>Population</th>
                             <th>Continent</th>
                             <th>Languages</th>
                             <th>Commands</th>
+                            <th>Flag</th>
                         </tr>
                         <tr runat="server" id="itemPlaceholder">
 
@@ -92,10 +92,13 @@
                         <td><%# Item.Name %></td>
                         <td><%# Item.Population %></td>
                         <td><%# Item.Continent.Name %></td>
-                        <td><%# GetLanguages(Item.Languages) %></td>
+                        <td><%# GetLanguages(Item.Languages)%> <a href="EditLanguages.aspx?countryId=<%# Item.Id %>">Edit..</a></td>
                         <td>
                             <asp:Button runat="server" ID="EditCountryButton" CommandName="Edit" Text="Edit" CssClass="btn btn-mini" />
                             <asp:Button runat="server" ID="DeleteCountryButton" CommandName="Delete" Text="X" CssClass="btn btn-mini btn-danger"/>
+                        </td>
+                        <td>
+                            <image src='<%= "data:image/jpeg;base64," + ConvertToBase64((byte[])Eval("Flag"))%>'/>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -109,7 +112,7 @@
                                 ErrorMessage="Required Field" Text="*" runat="server" EnableClientScript="false"/>
                             <asp:RegularExpressionValidator runat="server" ValidationGroup="CountryEdit" 
                                 ControlToValidate="CountryNameEditTextBox" 
-                                ValidationExpression="[A-Z][A-Za-z'\s-]{0,49}"                                
+                                ValidationExpression="[A-Z][A-Za-z'\s-]{0,49}"
                                 ErrorMessage="Name must start with capital letter!<br/>Allowed symbols: letters,', ,-<br/>Must be 1 to 50 symbols long!"
                                 Text="*" EnableClientScript="false" ID="RegularExpressionValidator_CoutryNameEditTextBox"/>
                         </td>
@@ -120,10 +123,10 @@
                                 ValidationGroup="CountryEdit" 
                                 ControlToValidate="CountryNameEditTextBox" 
                                 ErrorMessage="Required Field" Text="*"
-                                runat="server" EnableClientScript="false"/>                          
+                                runat="server" EnableClientScript="false"/>
                             <asp:CompareValidator ID="CompareValidator_CountryPopulationEditTextbox" runat="server"
                                 ControlToValidate="CoutryPopulationEditTextBox" CultureInvariantValues="true" 
-                                ValidationGroup="CountryEdit"                                 
+                                ValidationGroup="CountryEdit"
                                 EnableClientScript="false" 
                                 ErrorMessage="Must be smaller than 2147000000" 
                                 Text="*"
@@ -145,14 +148,20 @@
                         </td>
                         <td>
                             <asp:Label Text='<%# GetLanguages(Item.Languages) %> ' runat="server"/>
-                            <sup style="font-size:0.6em">*language edit button available</sup>
                         </td>
                         <td>
                             <asp:Button CommandName="Update" runat="server" Text="Update"  CssClass="btn btn-mini" ValidationGroup="CountryEdit"/>
                             <asp:Button CommandName="Cancel" runat="server" Text="Cancel"  CssClass="btn btn-mini" />
+                            <asp:Button CommandName="ChangeFlag" runat="server" Text="ChangeFlag" CssClass="btn btn-mini" 
+                                CommandArgument="<%# Item.Id %>" ID="ChangeFlagButton" OnCommand="ChangeFlagButton_Command" />
                         </td>
+                        <td>
+                            
+                            <%--<asp:Image runat="server" Id="ImageUpload"
+                            ImageUrl="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAsMAAAGhCAIAAAALOi7ZAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QgLEhM6PUSGrwAAIABJREFUeNq8vcuSLEmWHKZ6jnlEZt5761Z3T/eAHAICAYRcEALsuOCWPzbzDfwP/gKXWJACoRDCBSkEBgPhADKY7qnu+4wIdztHuThmHh55q2t6ho+SlpaqyMwID3ez89CjqsY//dM//bM/+zMc/pGE3//PT/z09/1I0t/1Rz/x+o9+0I++vv/n8fU/8MW/9U9+9JVvL/v/u1cy86cv5ttfePXKq//8fTfhp+/qT3/oq8v+6V/+Ay/v25/+4X/46nqO"/></td>--%>
                     </tr>
                 </EditItemTemplate>
+
                 <InsertItemTemplate>
                     <tr runat="server">
                         <td class="text-box-small">(Autogenerated)</td>
@@ -167,7 +176,7 @@
                             <asp:RegularExpressionValidator runat="server" 
                                 ValidationGroup="CountryInsert" 
                                 ControlToValidate="CountryNameInsertTextBox" 
-                                ValidationExpression="[A-Z][A-Za-z'\s-]{0,49}"                                
+                                ValidationExpression="[A-Z][A-Za-z'\s-]{0,49}"
                                 ErrorMessage="Name must start with capital letter!<br/>Allowed symbols: letters,', ,-<br/>Must be 1 to 50 symbols long!"
                                 Text="*" EnableClientScript="false" 
                                 ID="RegularExpressionValidator_CoutryNameInsertTextBox"/>
@@ -180,11 +189,11 @@
                                 ValidationGroup="CountryInsert" 
                                 ControlToValidate="CoutryPopulationInsertTextBox" 
                                 ErrorMessage="Required Field" Text="*"
-                                runat="server" EnableClientScript="false"/>                          
+                                runat="server" EnableClientScript="false"/>
                             
                             <asp:CompareValidator ID="CompareValidator_CountryPopulationInsertTextbox" runat="server"
                                 ControlToValidate="CoutryPopulationInsertTextBox" CultureInvariantValues="true" 
-                                ValidationGroup="CountryInsert"                                 
+                                ValidationGroup="CountryInsert"
                                 EnableClientScript="false" 
                                 ErrorMessage="Must be smaller than 2147000000" 
                                 Text="*"
@@ -205,11 +214,8 @@
                             <asp:DropDownList ID="CountryEditContinentSelectDropDownList" runat="server" DataSourceID="ContinentsDataSource" 
                                 DataTextField="Name" DataValueField="Id" SelectedValue='<%# BindItem.ContinentId %>' CssClass="text-box-meduim" />
                         </td>
-                        <td runat="server">                            
-                            <asp:Panel ID="PanelIdForTest" runat="server">
-                                <asp:ListBox DataSourceID="LanguagesDataSource" 
-                                DataTextField="Name" DataValueField="Id" ID="AddNewLanguage_InsertCountryy" runat="server" SelectionMode="Multiple"/>
-                            </asp:Panel>
+                        <td runat="server">
+                                Add languages with edit
                         </td>
                         <td>
                             <asp:Button ID="InsertButton" CommandName="insert" runat="server" Text="Add" 
@@ -217,13 +223,23 @@
                         </td>
                     </tr>
                 </InsertItemTemplate>
+
+                <EmptyDataTemplate >
+                    <div class="text-center span6">
+                        <p>Empty countries list </p>
+                        <asp:Button runat="server" OnClick="ToggleInsertField"
+                             Class="btn btn-mini" Text="Toggle Inser Form"/>
+                    </div>
+                </EmptyDataTemplate>
             </asp:ListView>
+            <asp:Label runat="server" AssociatedControlID="UploadFile" Text="Select Image to Set as flag" ToolTip="select witch country to add the flag to" />
+            <asp:FileUpload ID="UploadFile" runat="server" />
         </div>
 
 
         <div class="row-fluid text-center">
-            <a href="World.aspx" class="btn btn-primary">Back to main</a>            
-        </div>   
+            <a href="World.aspx" class="btn btn-primary">Back to main</a>
+        </div> 
     </form>
 </body>
 </html>

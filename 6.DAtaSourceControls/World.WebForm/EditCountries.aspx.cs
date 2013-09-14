@@ -10,13 +10,11 @@ namespace World.WebForm
 {
     public partial class EditCountries : System.Web.UI.Page
     {
-        
-
         protected string GetLanguages(IEnumerable<Data.Language> languages) 
         {
             if (languages.Count() == 0)
             {
-                return "No languages for this country";
+                return "No Languages";
             }
 
             var builder = new StringBuilder();
@@ -26,7 +24,7 @@ namespace World.WebForm
             }
             builder.Length -= 2;
 
-            return builder.ToString();            
+            return builder.ToString();
         }
 
         protected void CountriesDataSource_Deleting(object sender, EntityDataSourceChangingEventArgs e)
@@ -63,22 +61,27 @@ namespace World.WebForm
             }
         }
 
-        protected void CountriesDataSource_Inserting(object sender, EntityDataSourceChangingEventArgs e)
+        protected void CountriesDataSource_Inserted(object sender, EntityDataSourceChangedEventArgs e)
         {
-            var editedCountry = (Data.Country)e.Entity;
-            var controlsMain = this.editCountriesForm.Controls;
+            this.ToggleInsertField(this, null);
+        }
 
-            Control languageSelectControl;
-            foreach (var control in controlsMain)
-            {
-                if (((Control)control).ID == "AddNewLanguage_InsertCountryy;")
-                {
-                    languageSelectControl = (Control)control;
-                    break;
-                }
-            }
+        protected void ChangeFlagButton_Command(object sender, CommandEventArgs e)
+        {
+            var countryId = Convert.ToInt32(e.CommandArgument);
+            var file = this.UploadFile.FileBytes;
 
-            //var values = (int[])this.AddNewLanguage_InsertCountryy.SelectedValue;
+            var context = new Data.WorldEntities();
+            var country = context.Countries.Find(countryId);
+            
+            country.Flag = file;
+
+            context.SaveChanges();
+        }
+
+        protected string ConvertToBase64(byte[] file)
+        {
+            return Convert.ToBase64String(file);
         }
     }
 }

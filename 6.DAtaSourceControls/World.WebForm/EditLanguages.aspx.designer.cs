@@ -10,25 +10,16 @@
 namespace World.WebForm {
     
     
-    public partial class EditCountries {
+    public partial class EditLanguages {
         
         /// <summary>
-        /// editCountriesForm control.
+        /// EditLanguagesForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm editCountriesForm;
-        
-        /// <summary>
-        /// ContinentsDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource ContinentsDataSource;
+        protected global::System.Web.UI.HtmlControls.HtmlForm EditLanguagesForm;
         
         /// <summary>
         /// LanguagesDataSource control.
@@ -40,39 +31,75 @@ namespace World.WebForm {
         protected global::System.Web.UI.WebControls.EntityDataSource LanguagesDataSource;
         
         /// <summary>
-        /// CountriesDataSource control.
+        /// CountrySelected control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.EntityDataSource CountriesDataSource;
+        protected global::System.Web.UI.WebControls.Literal CountrySelected;
         
         /// <summary>
-        /// SelectedContinent control.
+        /// CurrentLanguages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList SelectedContinent;
+        protected global::System.Web.UI.WebControls.Repeater CurrentLanguages;
         
         /// <summary>
-        /// CountriesListView control.
+        /// AddSelectedLanguages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView CountriesListView;
+        protected global::System.Web.UI.WebControls.Button AddSelectedLanguages;
         
         /// <summary>
-        /// UploadFile control.
+        /// SelectLanguageListBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload UploadFile;
+        protected global::System.Web.UI.WebControls.ListBox SelectLanguageListBox;
+        
+        /// <summary>
+        /// DeleteSelectedLanguage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteSelectedLanguage;
+        
+        /// <summary>
+        /// AddNewLanguageTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox AddNewLanguageTextBox;
+        
+        /// <summary>
+        /// AddNewLanguageButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddNewLanguageButton;
+        
+        /// <summary>
+        /// ErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
     }
 }

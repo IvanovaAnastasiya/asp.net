@@ -99,14 +99,14 @@
                         PageButtonCount="5" Position="Bottom" NextPageText="Next" 
                         PreviousPageText="Previous" Mode="NumericFirstLast" />
                 </asp:GridView>
-                <a href="EditCountries.aspx" class="btn btn-primary">Edit Countries</a>
+                <a href="EditCountries.aspx" class="btn btn-info">Edit Countries</a>
             </div>
             <%--<div class="span2">
                 <a href="EditCountries.aspx" class="btn-info btn">Edit countries/towns</a>
             </div>--%>
           
             <div class="span5">
-                <h3 class="text-center">Towns:</h3>               
+                <h3 class="text-center">Towns:</h3>
                 
                 <asp:ListView 
                     ID="TownsListView" 
@@ -119,12 +119,12 @@
                     <LayoutTemplate>
                             <ul class="unstyled" runat="server">
                                 <asp:PlaceHolder ID="itemPlaceholder" runat="server"></asp:PlaceHolder>
-                            </ul>                             
+                            </ul>
                     </LayoutTemplate>
 
                     <ItemTemplate>
                         <li runat="server"><span>Name: </span> <%#: Item.Name %></li>
-                    </ItemTemplate>                    
+                    </ItemTemplate>
 
                     <SelectedItemTemplate>
                         <li class="selected-town"><%#: Eval("Name") %></li>

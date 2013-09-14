@@ -9,8 +9,9 @@ namespace World.WebForm
 {
     public partial class EditTowns : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {                   
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            var selectedCountry = this.CountriesDropDownList.SelectedValue;
         }
 
         protected string GetCountryId() 
@@ -19,19 +20,19 @@ namespace World.WebForm
         }
 
         protected void TownsDataSource_Deleting(object sender, EntityDataSourceChangingEventArgs e)
-        {               
+        {
         }
 
         protected void InsertButtonShow_Click(object sender, EventArgs e)
         {
             if (this.TownsListView.InsertItemPosition == InsertItemPosition.None)
             {
-                this.TownsListView.InsertItemPosition = InsertItemPosition.LastItem;                
+                this.TownsListView.InsertItemPosition = InsertItemPosition.LastItem;
             }
             else
             {
                 this.TownsListView.InsertItemPosition = InsertItemPosition.None;
             }
-        }        
+        }
     }
 }

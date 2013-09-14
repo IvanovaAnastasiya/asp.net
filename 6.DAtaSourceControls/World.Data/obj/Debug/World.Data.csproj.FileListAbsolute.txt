@@ -1,0 +1,10 @@
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\bin\Debug\World.Data.dll.config
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\bin\Debug\World.Data.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\bin\Debug\World.Data.pdb
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\bin\Debug\EntityFramework.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\bin\Debug\EntityFramework.xml
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\obj\Debug\World.Data.csprojResolveAssemblyReference.cache
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\obj\Debug\World.Data.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.Data\obj\Debug\World.Data.pdb

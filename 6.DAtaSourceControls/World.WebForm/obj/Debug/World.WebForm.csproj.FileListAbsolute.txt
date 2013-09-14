@@ -1,0 +1,12 @@
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\World.WebForm.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\World.WebForm.pdb
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\EntityFramework.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\EntityFramework.SqlServer.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\World.Data.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\World.Data.pdb
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\EntityFramework.xml
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\EntityFramework.SqlServer.xml
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\obj\Debug\World.WebForm.csprojResolveAssemblyReference.cache
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\obj\Debug\World.WebForm.dll
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\obj\Debug\World.WebForm.pdb
+C:\Users\academy\Downloads\parlakov\asp.net\6.DAtaSourceControls\World.WebForm\bin\World.WebForm.dll.config
