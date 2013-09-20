@@ -10,33 +10,51 @@
 namespace Library {
     
     
-    public partial class _Default {
+    public partial class BookDetails {
         
         /// <summary>
-        /// TextBoxSearchQuery control.
+        /// LabelTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxSearchQuery;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl LabelTitle;
         
         /// <summary>
-        /// SearchButton control.
+        /// LabelAuthor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton SearchButton;
+        protected global::System.Web.UI.WebControls.Literal LabelAuthor;
         
         /// <summary>
-        /// BooksRepeater control.
+        /// BookISBN control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView BooksRepeater;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BookISBN;
+        
+        /// <summary>
+        /// BookUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal BookUrl;
+        
+        /// <summary>
+        /// BookDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl BookDescription;
     }
 }

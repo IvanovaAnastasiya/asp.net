@@ -8,3 +8,27 @@
   background-color: white;
   border-style:none;
 }
+
+ul{
+    list-style-type:none;
+}
+
+.text-italic{
+    font-style: italic;
+}
+
+.category-thumbnail{
+    min-heigth:150px;
+ }
+
+.books-cell{
+    width:100px;
+    overflow:elisis;
+    border-style: dotted;
+    text-overflow: ellipsis;
+}
+
+.edit-books-table{
+    border-style: dotted;
+    columns-width:100px;
+}

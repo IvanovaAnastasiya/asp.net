@@ -7,7 +7,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - Library System</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -49,20 +49,19 @@
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a class="brand" runat="server" href="~/">Application name</a>                       
+                        <a class="brand" runat="server" href="~/">Library System</a>
                         <div class="nav-collapse collapse">
-                            
                             <asp:LoginView runat="server" ViewStateMode="Disabled">
-                                <AnonymousTemplate>                                    
+                                <AnonymousTemplate>
                                     <ul class="nav nav-pills nav-stacked pull-right">
                                         <li class="navbar-text"><a id="registerLink" runat="server" href="~/Account/Register">Register</a></li>
                                         <li class="navbar-text"><a id="loginLink" runat="server" href="~/Account/Login">Log in</a></li>
                                     </ul>
                                 </AnonymousTemplate>
                                 <LoggedInTemplate>
-                                    <ul class="nav nav-pills nav-stacked">                               
-                                        <li><a id="A1" runat="server" href="~/">Home</a></li>
-                                        <li><a id="A2" runat="server" href="~/Contact">Contact</a></li>
+                                    <ul class="nav nav-pills nav-stacked">
+                                        <li><a runat="server" href="~/Registered/EditBooks.aspx">Books</a></li>
+                                        <li><a runat="server" href="~/Registered/Categories.aspx">Categories</a></li>
                                     </ul>
                                     <ul class="nav nav-pills nav-stacked pull-right">
                                         <li class="navbar-text">
