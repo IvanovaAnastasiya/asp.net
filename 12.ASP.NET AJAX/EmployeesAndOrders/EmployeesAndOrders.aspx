@@ -37,8 +37,8 @@
             AssociatedUpdatePanelID="FirstPanel" 
             ID="Demo">
             <ProgressTemplate>
-                    <div style="height:100%; width:100%;background-color:white;position:absolute">
-                        <img src="img/update.gif"></img>
+                    <div style="height:200%; width:100%;background-color:white;position:absolute">
+                        <img src="img/updating_white.gif"></img>
                     </div>
             </ProgressTemplate>
         </asp:UpdateProgress>
