@@ -41,7 +41,7 @@ namespace Library
             {
                 var queryToLower = query.ToLower();
                 books = books.Where(b =>
-                   b.Author.IndexOf(queryToLower) > 0 || b.Title.IndexOf(queryToLower) > 0);
+                   b.Author.IndexOf(queryToLower) >= 0 || b.Title.IndexOf(queryToLower) >= 0);
             }
             return books.OrderBy(b => b.Title).ThenBy(b => b.Author);
         }

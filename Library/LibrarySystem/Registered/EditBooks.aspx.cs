@@ -31,8 +31,6 @@ namespace Library.Registered
             return dbContext.Books.Include("Category");
         }
 
-        
-
         #region Add new book methods
         protected void OpenInsertForm_Click(object sender, EventArgs e)
         {
@@ -389,7 +387,6 @@ namespace Library.Registered
             this.BookId = Convert.ToInt32(e.CommandArgument);
             this.DeleteConfirmationPanel.Visible = true;
         }
-
 
         protected void DeleteAction_Command(object sender, CommandEventArgs e)
         {
